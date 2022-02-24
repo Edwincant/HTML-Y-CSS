@@ -1,0 +1,316 @@
+/* Variables */
+:root {
+  --color-fondo-cuadro: rgba(246, 247, 213, 0.65);
+  --color-claro: #f6f7d5;
+  --texto-tamano: 18px;
+  --color-texto: #000000;
+  --color-fondo: #177e31;
+  --color-fondo-menu: #005521;
+  --color-fondo-menu-activo: #aeae2d;
+  --color-numeros: #e4e682;
+  --grosor-borde: 2em;
+}
+
+  /* Reseteo */
+
+  * {
+    box-sizing: border-box;
+  }
+
+  a {
+    text-decoration: none;
+    color: var(--color-texto);
+  }
+
+  body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    font-size: var(--texto-tamano);
+
+    color: var(--color-texto);
+  }
+
+/* Grid */
+
+#cabecera {
+  grid-area: cabecera;
+}
+
+#menu {
+  grid-area: menu;
+}
+
+#contenido {
+  grid-area: contenido;
+}
+
+#pie {
+  grid-area: pie;
+}
+
+body {
+  grid-template-areas:
+    ". cabecera ."
+    ". menu ."
+    ". contenido ."
+    "pie pie pie";
+}
+
+body {
+    grid-row: 1;
+    grid-column: 1;
+  
+    content: "";
+}
+
+body{
+    grid-row: 2;
+    grid-column: 1 / span 3;
+  
+    content: "";
+
+    z-index: -1;
+}
+/* Cabecera */
+
+body::before {
+  background-image: url(../imgs/ESTilo.\ 2022.png);
+  background-repeat: no-repeat;
+}
+
+#cabecera {
+  background-image: url(../imgs/1.jpg);
+  background-repeat: no-repeat;
+}
+
+/* Rallitas */
+
+#cabecera::before,
+#cabecera::after {
+  content: " ";
+  margin-bottom: 2em;
+}
+
+#cabecera::before {
+  border-left: 1px solid black;
+}
+
+#cabecera::after {
+  border-right: 1px solid black;
+}
+
+/* Idiomas */
+#idiomas li:last-of-type{
+  margin-left: auto;
+  margin-right: 2em;
+
+  align-self: flex-start;
+}
+
+#idiomas ul {
+  display: flex;
+}
+
+#idiomas a {
+  display: inline-block;
+  padding: 5px 10px;
+  background-color: var(--color-fondo);
+  margin-left: 6em;
+  font-variant: small-caps;
+
+}
+
+
+
+/* Menú */
+
+body > nav {
+  grid-area: menu;
+}
+
+#menu ul {
+  display: flex;
+}
+
+
+body::after,
+#menu {
+  background-color: var(--color-fondo-menu);
+  text-transform: uppercase;
+}
+
+#menu {
+  padding: 5px 0;
+}
+
+#menu a {
+  display: inline-block;
+  color: var(--color-claro);
+  font-weight: bold;
+
+  padding: 1em;
+}
+
+#menu a.activa {
+  background-color: var(--color-fondo-menu-activo);
+}
+
+
+
+/* Contenido */
+
+#contenido figure {
+  position: relative;
+}
+
+#contenido img {
+  display: block;
+}
+
+#contenido figcaption {
+  position: absolute;
+  bottom: 10em;
+  right: 2em;
+
+  width: 462px;
+  height: 95px;
+
+  padding: 1em;
+  line-height: 1.5em;
+
+  background-color: var(--color-fondo-cuadro);
+}
+
+#contenido figcaption::before {
+  content: '"';
+}
+
+#paginacion {
+  background-color: var(--color-fondo);
+}
+
+#paginacion ul {
+  display: flex;
+
+  padding-left: 1em;
+}
+
+#paginacion a {
+  display: inline-block;
+  color: var(--color-claro);
+  padding: 5px;
+  font-weight: bold;
+}
+
+#paginacion a.activa {
+  color: var(--color-texto);
+}
+
+#contenido article {
+  margin-top: 3em;
+  margin-bottom: 5em;
+}
+
+#contenido article p {
+  margin: 1em;
+}
+
+
+/* Pie */
+
+#pie {
+  display: flex;
+  justify-content: center;
+
+  border-top: 2em solid var(--color-fondo-menu);
+
+  background-color: var(--color-fondo);
+
+  padding-top: 1em;
+  padding-bottom: 3em;
+}
+
+#vinculos {
+  margin-right: auto;
+}
+
+#vinculos nav ul {
+  display: flex;
+}
+
+#vinculos nav ul,
+#vinculos nav a,
+#vinculos p,
+#direccion p {
+  padding: 0.25em;
+}
+
+#vinculos nav:first-of-type a,
+.calle,
+.ciudad,
+.provincia {
+  text-transform: uppercase;
+}
+
+.provincia::before {
+  content: "(";
+}
+.provincia::after {
+  content: ")";
+}
+
+#logo {
+  margin-top: -3em;
+}
+
+#direccion {
+  margin-left: auto;
+}
+
+/* Vista móvil */
+
+@media (max-width: 960px) {
+  body {
+    grid-template-columns: 0 1fr 0;
+  }
+
+  #menu ul {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #menu li:last-of-type {
+    margin-left: inherit;
+  }
+
+  #contenido img {
+    width: 100%;
+  }
+
+  #contenido figcaption {
+    position: inherit;
+    bottom: inherit;
+    right: inherit;
+
+    width: 100%;
+    height: inherit;
+  }
+
+  #pie {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #logo {
+    margin-top: inherit;
+  }
+
+  #vinculos {
+    margin-right: inherit;
+  }
+
+  #direccion {
+    margin-left: inherit;
+  }
+
+  
+}
